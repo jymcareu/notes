@@ -1,24 +1,23 @@
-Ê¹ÓÃquerySelector()ºÍquerySelectorAll()£¬ÐèÒªÁË½âselectorÓï·¨£¬È»ºóÊ¹ÓÃÌõ¼þÀ´»ñÈ¡½Úµã£¬¸ü¼Ó·½±ã£º
+ä½¿ç”¨querySelector()å’ŒquerySelectorAll()ï¼Œéœ€è¦äº†è§£selectorè¯­æ³•ï¼Œç„¶åŽä½¿ç”¨æ¡ä»¶æ¥èŽ·å–èŠ‚ç‚¹ï¼Œæ›´åŠ æ–¹ä¾¿ï¼š
 
-// Í¨¹ýquerySelector»ñÈ¡IDÎªq1µÄ½Úµã£º
+// é€šè¿‡querySelectorèŽ·å–IDä¸ºq1çš„èŠ‚ç‚¹ï¼š
 var q1 = document.querySelector('#q1');
 
-// Í¨¹ýquerySelectorAll»ñÈ¡q1½ÚµãÄÚµÄ·ûºÏÌõ¼þµÄËùÓÐ½Úµã£º
+// é€šè¿‡querySelectorAllèŽ·å–q1èŠ‚ç‚¹å†…çš„ç¬¦åˆæ¡ä»¶çš„æ‰€æœ‰èŠ‚ç‚¹ï¼š
 var ps = q1.querySelectorAll('.highlighted > p');
 
-¸üÐÂDom
+æ›´æ–°Dom
 
-ÓÃinnerHTMLÊ±Òª×¢Òâ£¬ÊÇ·ñÐèÒªÐ´ÈëHTML¡£Èç¹ûÐ´ÈëµÄ×Ö·û´®ÊÇÍ¨¹ýÍøÂçÄÃµ½ÁË£¬Òª×¢Òâ¶Ô×Ö·û±àÂëÀ´±ÜÃâXSS¹¥»÷¡£
-ÓÃinnerHTMLÊ±Òª×¢Òâ£¬ÊÇ·ñÐèÒªÐ´ÈëHTML¡£Èç¹ûÐ´ÈëµÄ×Ö·û´®ÊÇÍ¨¹ýÍøÂçÄÃµ½ÁË£¬Òª×¢Òâ¶Ô×Ö·û±àÂëÀ´±ÜÃâXSS¹¥»÷¡£
-innerText²»·µ»ØÒþ²ØÔªËØµÄÎÄ±¾£¬¶øtextContent·µ»ØËùÓÐÎÄ±¾¡£ÁíÍâ×¢ÒâIE<9²»Ö§³ÖtextContent
+ç”¨innerHTMLæ—¶è¦æ³¨æ„ï¼Œæ˜¯å¦éœ€è¦å†™å…¥HTMLã€‚å¦‚æžœå†™å…¥çš„å­—ç¬¦ä¸²æ˜¯é€šè¿‡ç½‘ç»œæ‹¿åˆ°äº†ï¼Œè¦æ³¨æ„å¯¹å­—ç¬¦ç¼–ç æ¥é¿å…XSSæ”»å‡»ã€‚
+innerTextä¸è¿”å›žéšè—å…ƒç´ çš„æ–‡æœ¬ï¼Œè€ŒtextContentè¿”å›žæ‰€æœ‰æ–‡æœ¬ã€‚å¦å¤–æ³¨æ„IE<9ä¸æ”¯æŒtextContent
 
 
 insertBefore
 
-Èç¹ûÎÒÃÇÒª°Ñ×Ó½Úµã²åÈëµ½Ö¸¶¨µÄÎ»ÖÃÔõÃ´°ì£¿¿ÉÒÔÊ¹ÓÃparentElement.insertBefore(newElement, referenceElement);×Ó½Úµã»á²åÈëµ½referenceElementÖ®Ç°¡£
-DOM½ÚµãµÄstyleÊôÐÔ¶ÔÓ¦ËùÓÐµÄCSS£¬¿ÉÒÔÖ±½Ó»ñÈ¡»òÉèÖÃ¡£ÒòÎªCSSÔÊÐífont-sizeÕâÑùµÄÃû³Æ£¬µ«Ëü²¢·ÇJavaScriptÓÐÐ§µÄÊôÐÔÃû£¬ËùÒÔÐèÒªÔÚJavaScriptÖÐ¸ÄÐ´ÎªÍÕ·åÊ½ÃüÃûfontSize¡£
+å¦‚æžœæˆ‘ä»¬è¦æŠŠå­èŠ‚ç‚¹æ’å…¥åˆ°æŒ‡å®šçš„ä½ç½®æ€Žä¹ˆåŠžï¼Ÿå¯ä»¥ä½¿ç”¨parentElement.insertBefore(newElement, referenceElement);å­èŠ‚ç‚¹ä¼šæ’å…¥åˆ°referenceElementä¹‹å‰ã€‚
+DOMèŠ‚ç‚¹çš„styleå±žæ€§å¯¹åº”æ‰€æœ‰çš„CSSï¼Œå¯ä»¥ç›´æŽ¥èŽ·å–æˆ–è®¾ç½®ã€‚å› ä¸ºCSSå…è®¸font-sizeè¿™æ ·çš„åç§°ï¼Œä½†å®ƒå¹¶éžJavaScriptæœ‰æ•ˆçš„å±žæ€§åï¼Œæ‰€ä»¥éœ€è¦åœ¨JavaScriptä¸­æ”¹å†™ä¸ºé©¼å³°å¼å‘½åfontSizeã€‚
 
 
-²Ù×÷±íµ¥
+æ“ä½œè¡¨å•
 
-Èç¹ûÎÒÃÇ»ñµÃÁËÒ»¸ö<input>½ÚµãµÄÒýÓÃ£¬¾Í¿ÉÒÔÖ±½Óµ÷ÓÃvalue»ñµÃ¶ÔÓ¦µÄÓÃ»§ÊäÈëÖµ£ºinput.value£»
+å¦‚æžœæˆ‘ä»¬èŽ·å¾—äº†ä¸€ä¸ª<input>èŠ‚ç‚¹çš„å¼•ç”¨ï¼Œå°±å¯ä»¥ç›´æŽ¥è°ƒç”¨valueèŽ·å¾—å¯¹åº”çš„ç”¨æˆ·è¾“å…¥å€¼ï¼šinput.valueï¼›
