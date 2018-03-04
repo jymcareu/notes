@@ -1,0 +1,58 @@
+php：是一种创建动态交互性站点的服务器端脚本语言。
+
+$data_int = 1234;   // 十进制数 
+$data_int = -567;    // 一个负数
+$data_int = 0123;    // 八进制数（等于十进制的 83）
+$data_int = 0x1a;    // 十六进制数（等于十进制的 26）
+
+var_dump(); //解析变量数据类型；
+
+unset();//注销定义；
+
+“=”：把右边表达式的值赋给左边的运算数。它将右边表达式值复制一份，交给左边的运算数。换而言之，首先给左边的运算数申请了一块内存，然后把复制的值放到这个内存中。
+“&”：引用赋值，意味着两个变量都指向同一个数据。它将使两个变量共享一块内存，如果这个内存存储的数据变了，那么两个变量的值都会发生变化。
+$c = &$a; //$c与$a调用同一块内存的数据；
+
+ceil()的作用是向上取整； ceil(4.1) = 5;
+
+foreach循环语句，常用于遍历数组，一般有两种使用方式:不取下标、取下标。
+$students = array(
+'2010'=>'令狐冲',
+'2011'=>'林平之');
+foreach(数组 as 值)  foreach($students as $name) //只取值不取下标
+foreach(数组 as 下标 => 值)  foreach($students as $num => $name) //同时取值和下标
+print_r($student); //输出数组；
+
+设置页面内容是html编码格式是utf-8
+header("Content-Type: text/plain;charset=utf-8"); 
+
+定义的变量：
+
+$_GET、$_POST、$_COOKIES、$FILES、$_ENV、$_REQUEST、$SEESION、$_SERVER是php自定义的超全局变量，在一个脚本的全部作用域中都可用，不用使用global关键字；即若是全局变量需要使用global来定义；
+
+php中当前页面中声明的普通变量，不能在函数或者类中起作用，也不能被传递到其他页面
+
+php中的静态变量只能定义在函数内部，并且不能是表达式。
+
+嵌套函数：
+当外部函数被调用时，下一级内部函数就会自动进入全局域，成为新定义的函数。
+如： 
+function out(){
+     if(!function_exists('in')){  //加入这句话，便可多次调用out函数，不然会报错。
+	function in(){}
+     }
+｝
+先调用 out(); 接着便可调用in();
+
+调用其他文件的函数
+set_include_path(get_include_path().PATH_SEPARATOR.'文件名1');
+set_include_path(get_include_path().PATH_SEPARATOR.'文件名2');
+或
+ini_set('include_path',get_include_path().PATH_SEPARATOR.'文件名1');
+ini_set('include_path',get_include_path().PATH_SEPARATOR.'文件名2');
+
+restore_include_path();//取消调用的路径
+
+1.对变量名大小写是敏感的；
+
+2.双引号解析变量，而单引号不会解析变量；

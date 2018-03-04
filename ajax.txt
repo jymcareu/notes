@@ -1,0 +1,104 @@
+http请求包括四个部分：
+1.http请求的方法或动作，get/post
+2.请求的地址url
+3.请求头，包含一些客户端环境信息，身份验证信息等
+4.请求体，请求正文。
+
+get：一般用于信息的获取，使用url传递参数，一般只能传递2000个字符，在地址栏上会显示传递的信息；
+
+post：一般用于修改服务器上的资源，对发送的信息数量无限制，更安全。
+
+open(method,url,async(异步));
+send（string）;
+
+
+XMLHttpRequest取得响应：
+responseText:获得字符串形式的响应数据；
+responseXML:获得XML形式的响应数据；
+status和statusText：以数字和文本形式返回http状态码；
+getAllResponseHeader():获取所有的响应报头；
+getResponseHeader():查询响应中某个字段的值；
+
+readyState属性：
+0：请求未初始化，open还没有被调用；
+1：服务器连接已建立，open已经被调用； 
+2：请求已接收，也就是接受到头信息了；
+3：请求处理中，也就是接受到相应主体了；
+4：请求已完成，且相应已就绪，也就是响应完成了。
+
+ajax异步访问的步骤：
+1.创建xmlhttprequest对象；对于低版本的IE，需要换一个ActiveXObject对象：var request = new ActiveXObject('Microsoft.XMLHTTP')；
+2.创建一个http请求，并指定该http请求的方法、地址、验证信息；（url使用的是相对路径，url的域名必须要和当前页面完全一致，即域名要相同（www.example.com和example.com不同），协议要相同（http和https不同），端口号要相同（默认是:80端口，它和:8080就不同）。有的浏览器口子松一点，允许端口不同，大多数浏览器都会严格遵守这个限制）；
+3.发送http请求；
+4.返回异步调用返回的数据；
+5.使用js和dom实现局部刷新。
+
+var request = new XMLHttpRequest();
+request.open("POST","xx.php",true);
+request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+request.send("name=??&num=??");
+
+request.onreadystatechange = function(){
+	if(request.readyState==4&&request.status==200){
+         //做出事情 request.responseText;
+}
+}
+
+
+JSon数据：
+
+序列化：即Serialization，是一个将对象的状态信息转变为可以存储或传输的形式的过程；
+
+反序列化：即Deserialization，顾名思义是一个将可以存储或传输的序列转变为某个对象的状态信息的过程。
+
+与xml比较的优点：
+1、json的长度和xml格式比起来很短小
+2、json读写的速度更快
+3、json可以使用javascript内建的方法直接进行解析，转换成javascript对象，非常方便
+
+json的数据类型
+数字（整数或浮点数），
+字符串（在双引号中），
+逻辑值（true或false），
+数组（在方括号中），
+对象（在花括号中），
+null
+
+{
+     "staff":[
+	{"name":"洪七","age":70},
+	{"name":"郭靖","age":100},
+	{"name":"黄蓉","age":1290}
+	]
+}
+
+javascript解析json数据：
+
+var jsondata = '{ "staff":[{"name":"洪七","age":70},{"name":"郭靖","age":100},{"name":"黄蓉","age":1290}]}';
+var jsonobj = eval('('+jsondata+')'); //不仅可以解析字符串，还会解析json数据里的方法，所以会很危险，会解析恶意代码
+var jsonobj = JSON.parse(jsondata); //只能解析字符串
+alert(jsonobj.staff[0].name);
+
+将json数据转为string：JSON.stringify();
+
+jquery中有ajax的封装方法，我们只需设置一些属性：
+1. type：类型，“POST”或“GET”，默认为“GET”
+2. url：发送请求的地址
+3. data：是一个对象，连同请求发送到服务器的数据
+4. dataType：预期服务器返回的数据类型。如果不指定，jquery将自动根据http包MIME信息来智能判断，一般我们采用json格式，可以设置为“json”
+5. succcess：是一个方法，请求成功后的回调函数。传入返回后的数据，以及包含成功代码的字符串
+6. error：是一个方法，请求失败时调用此函数。传入XMLHttpRequest对象。
+
+js出于安全方面的考虑，不允许跨域调用其他页面的对象。
+
+处理跨域的方法一 ：代理
+处理跨域的方法二：jsonp可用于解决主流浏览器的跨域数据访问。但是jsonp不支持post请求。
+
+$.ajax({type:"GET",url:"",dataType:"jsonp",jsonp:"callback"})；
+
+在php中： $jsonp = $_GET["callback"];	echo jsonp.'({"success":ture,"msg":"hhhh"})';
+
+处理跨域的方法三：XHR2  html5提供的，IE10以下版本都不支持
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods:POST,GET");
+

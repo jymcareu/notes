@@ -1,0 +1,51 @@
+var a = new Number(); //a是一个number类型的对象
+
+Number("n"); //NaN
+Number("123");//123
+Number(""); //0
+number的方法：
+Math.pow(2,25) ;//2的25次幂
+Math.round(0.6);  // 1: 四舍五入
+Math.ceil(0.6); //1:向上求整
+Math.floor(0.6); //0:向下求整
+Math.abs(-5); //5:求绝对值
+Math.max(x,y,z); //返回最大值
+Math.min(x,y,z); //返回最小值
+Math.random(); //生成一个大于等于0小于1.0的伪随机数
+Math.PI;  //π
+Math.E;  //e
+Math.sqrt(3);  //3的平方根
+Math.pow(3,1/3); //3的立方根
+Math.sin(0);  //三角函数：还有cos，tan等
+Math.log(10); //10的自然对数
+Math.log(100)/Math.LN10;  //以10为底100的对数
+Math.log(512)/Math.LN2;  //以2为底512的对数
+Math.exp(3);  //e的三次幂
+
+toString():转为字符串；
+var n=17;
+a = n.toString(2);//转换为"10001"
+b ="0" +  n.toString(8);//转换为"021"
+c ="0x" + n.toString(16);//转换为"0x11"
+[1,2,3].toString();  //"1,2,3"
+function(x){}.toString();  //"function(){}"
+
+valueOf():把对象转为字符串；
+var d = new Date(2000,0,1); d.valueOf();//1262332800000
+
+var n = 123456.789;
+n.toFixed(0); //"123457"：根据小数点后的指定位数将数字转为字符串;
+n.toExponential(1);//"1.2e+5":使用指数记数法将数字转换成指数形式的字符串，其中小数点前只有一位，小数点后的位数则有参数指定;
+n.toPrecision(4);//"1.235e+5":根据指定的有效数字位数数字转换成字符串，如果有效数字的位数小于数字整数部分的位数，则转换成指数形式；
+n.toPrecision(7);//"123456.8"
+
+parseInt("3 blind mice");  //3
+parseFloat("3.14 meters"); //3.14
+parseInt("0xff");  //255
+parseInt(".1");  //NaN:整数不能以"."开始
+parseFloat("$72.23");  //NaN:数字不能以"$"开始
+parseInt("11",2);  //3
+parseInt("ff",16);  //255
+
+
+

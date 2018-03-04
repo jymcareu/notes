@@ -1,0 +1,25 @@
+Sass 是采用 Ruby 语言编写的一款 CSS 预处理语言；
+SCSS 是 Sass 的新语法格式，从外形上来判断他和 CSS 长得几乎是一模一样，代码都包裹在一对大括号里，并且末尾结束处都有一个分号。其文件名格式常常以“.scss”为扩展名。
+同样的这段 CSS 代码：
+
+body {
+  font: 100% Helvetica, sans-serif;
+  color: #333;
+}
+sass语法
+$font-stack: Helvetica, sans-serif
+$primary-color: #333
+
+body
+  font: 100% $font-stack
+  color: $primary-color
+
+我们使用 SCSS 语法格式将按下面这样来书写：
+
+$font-stack: Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}

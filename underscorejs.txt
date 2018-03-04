@@ -1,0 +1,54 @@
+Underscore 是一个 JavaScript 工具库，它提供了一整套函数式编程的实用功能，但是没有扩展任何 JavaScript 内置对象。 他弥补了 jQuery 没有实现的功能，同时又是 Backbone 必不可少的部分。 
+
+_.groupBy()把集合的元素按照key归类，key由传入的函数返回,是用来分组的；
+var scores = [20, 81, 75, 40, 91, 59, 77, 66, 72, 88, 99];
+var groups = _.groupBy(scores, function (x) {
+    if (x < 60) {
+        return 'C';
+    } else if (x < 80) {
+        return 'B';
+    } else {
+        return 'A';
+    }
+});
+// 结果:
+// {
+//   A: [81, 91, 88, 99],
+//   B: [75, 77, 66, 72],
+//   C: [20, 40, 59]
+// }
+
+shuffle / sample
+shuffle()用洗牌算法随机打乱一个集合；sample()则是随机选择一个或多个元素；
+
+flatten
+flatten()接收一个Array，无论这个Array里面嵌套了多少个Array，flatten()最后都把它们变成一个一维数组：
+
+zip / unzip
+zip()把两个或多个数组的所有元素按索引对齐，然后按索引合并成新数组。例如，你有一个Array保存了名字，另一个Array保存了分数，现在，要把名字和分数给对上，用zip()轻松实现：
+var names = ['Adam', 'Lisa', 'Bart'];
+var scores = [85, 92, 59];
+_.zip(names, scores);   // [['Adam', 85], ['Lisa', 92], ['Bart', 59]]
+unzip()则是反过来：
+var namesAndScores = [['Adam', 85], ['Lisa', 92], ['Bart', 59]];
+_.unzip(namesAndScores);// [['Adam', 'Lisa', 'Bart'], [85, 92, 59]]
+
+object
+有时候你会想，与其用zip()，为啥不把名字和分数直接对应成Object呢？别急，object()函数就是干这个的：
+var names = ['Adam', 'Lisa', 'Bart'];
+var scores = [85, 92, 59];
+_.object(names, scores);// {Adam: 85, Lisa: 92, Bart: 59}
+
+range
+range()让你快速生成一个序列，不再需要用for循环实现了：
+// 从0开始小于10:
+_.range(10); // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+// 从1开始小于11：
+_.range(1, 11); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+// 从0开始小于30，步长5:
+_.range(0, 30, 5); // [0, 5, 10, 15, 20, 25]
+// 从0开始大于-10，步长-1:
+_.range(0, -10, -1); // [0, -1, -2, -3, -4, -5, -6, -7, -8, -9]
+
+once
+顾名思义，once()保证某个函数执行且仅执行一次。如果你有一个方法叫register()，用户在页面上点两个按钮的任何一个都可以执行的话，就可以用once()保证函数仅调用一次，无论用户点击多少次；

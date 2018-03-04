@@ -1,0 +1,154 @@
+link与@import指令:
+1：link是XHTML标签，除了加载CSS外，还可以定义RSS,rel连接属性等其他事务；@import属于CSS范畴，只能加载CSS。
+2：link引用CSS时，在页面载入时同时加载；@import需要页面网页完全载入以后加载。
+3：link是XHTML标签，无兼容问题；@import是在CSS2.1提出的，低版本的浏览器不支持。
+4：link支持使用Javascript控制DOM去改变样式；而@import不支持。
+
+<link rel="stylesheet" type="text/css" href="sheet.css" media="all"/>
+
+<style type="text/css">
+   @import url("sheet.css");
+   @import url(sheet.css);
+</style>
+
+margin-top和margin-bottom无法应用于行内非替换元素;
+
+
+
+
+属性选择器：
+
+[foo^="bar"] 选择foo属性值以"bar"开头的所有元素；
+[foo$="bar"] 选择foo属性值以"bar"结尾的所有元素；
+[foo*="bar"] 选择foo属性值中包含子串"bar"的所有元素；
+[foo~="bar"] 选择foo属性值中出现的用空格分隔的词中包含"bar"的所有元素；
+[foo|="bar"] 选择foo属性值等于bar或者以bar开头的所有元素；
+
+
+
+选择子元素：
+
+h1>strong{color:red;} 选择是h1子元素的strong元素(而不是后代元素)。
+
+
+
+选择相邻兄弟元素：
+
+h1+p{margin-top:0;} 选择紧接在一个h1元素后出现的p元素，h1要与p元素有共同的父元素。
+
+
+
+动态伪类选择器：
+
+a:link  指示作为超链接并指向一个未访问地址的所有锚；
+a:visited  指示作为已访问地址超链接的所有锚；
+:focus  指示当前拥有输入焦点的元素，可以接受键盘输入或者能以某种方式激活的元素；
+:hover  指示鼠标停留在某个元素上；
+:active  指示被用户输入激活的元素；
+a:link{color:blue;} 当链接未被访问时是蓝色的
+a:visited{color:purple} 当链接被访问后是紫色的
+a:active{color:orange} 当链接在被点击的瞬间是桔色的
+a:hover{color:red} 当鼠标悬浮在链接上时是红色的
+
+
+静态伪类选择器：
+
+p:first-child  选择将p元素作为第一个子元素的p元素；
+*:lang(fr) 选择所有的法语元素；但是在我们一般的html中全都是en；
+
+
+伪元素选择器：
+
+设置首字母样式：
+p:first-letter{color:red;} p元素首字母颜色变红;
+
+设置第一行样式：
+p:first-line{color:purple;} p元素第一行变紫色；
+（first-letter与first-line只能应用于块级元素，以及伪元素选择器必须要放在最后）
+
+设置之前和之后的元素的样式：
+h2:before{content:'{{';}  在h2的前面加入"{{"
+h2:after{content:'}}';}  在h2的内容后面加入"}}"
+
+
+绝对长度单位：
+
+英寸(in):1英寸是2.54厘米;
+厘米(cm);
+毫米(mm);
+点(pt):一英寸为72点，1pt=1px;
+派卡(pc):1pc=12pt;
+
+相对长度单位:
+
+em:1个"em"定义为一个给定字体的font-size值;
+
+ex:是指所用字体中小写x的高度，大多数字体小写字母都是对应大写字母高度的一般，所以可以方便的设为1ex=0.5em;
+
+
+相对的大小以及粗细都是相对于父元素继承属性而言。
+
+
+font属性：
+
+font-style:normal||italic||oblique(后面两个都是倾斜，但是针对不同字体);
+font-variant:small-caps||normal(small-caps是小型大写字母字体);
+font-weight;
+font-size/line-height;
+font-family;
+
+
+
+文本缩进：
+
+text-indent:2em; 第一行缩进两个单位（不能应用于行内元素);
+
+text-align:left|center|right|justify|inherit（不能应用于行内元素）
+
+line-height:控制行间距(应用于所有元素)；
+
+垂直对齐文本：
+vertial-align:baseline(默认，该元素底端与其父元素的基线对齐)|sub(下标)|super（上标）|bottom|text-bottom|middle|top|text-top;只作用于行内元素；
+top:将元素行内框的顶端与包含该元素的行框的顶端对齐；
+bottom:将元素行内框的底端与包含该元素的行框的底端对齐；
+text-top:将元素行内框的顶端与父元素内容区的顶端对齐；
+text-bottom:将元素行内框的底端与父元素内容区的底端对齐；
+middle:将元素行内框的垂直中点与父元素基线上0.5ex处的一点对齐；
+super:将元素的内容区和行内框上移；
+sub:将元素的内容框与行内框下移；
+vertial-align:50%  (百分比继承的是父元素的line-height，不是font-size)
+
+字间隔：
+word-spacing:<length>|normal|inherit;
+
+字母间隔：
+letter-spacing:<length>|normal|inherit;
+
+文本转换：
+text-transform:uppercase(全部转为大写)|lowercase(全部转为小写)|capitalize(只有首字母大写)|none|inherit;
+
+文本装饰：
+text-decoration:underline|overline(上划线)|line-through|blink(会让文本闪烁)|none|inherit;
+
+文本阴影：
+text-shadow:none|[color <往右偏移距离><往下偏移距离><模糊半径>?,]*|inherit;
+
+处理空白符：
+white-space:pre-line|normal|nowrap|pre|pre-wrap;
+pre-line：合并空白符,保留换行符，允许自动换行
+normal：合并空白符，忽略换行符，允许自动换行
+nowrap：合并空白符，忽略换行符，不允许自动换行
+pre：保留空白符，保留换行符，不允许自动换行
+pre-wrap：保留空白符，保留换行符，允许自动换行
+
+文本方向：
+direction:ltr|rtl|inherit;
+行内元素只有当unicode-bidi:embed|bidi-override时才会应用direction属性；
+
+
+
+
+
+
+
+
